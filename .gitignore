@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables (Never share your keys!)
+.env
+.DS_Store
+
+# Build outputs
+dist/
+build/
