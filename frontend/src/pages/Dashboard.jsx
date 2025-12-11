@@ -3,7 +3,6 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { Trash2, Info, X, Calendar, Clock, User, Briefcase, Plus } from "lucide-react";
 
-// Helper for time formatting
 const formatTime = (timeString) => {
   if (!timeString) return "";
   const [hourString, minute] = timeString.split(':');
@@ -51,7 +50,6 @@ const Dashboard = () => {
       setFormData({ userId: "", date: "", startTime: "", endTime: "" }); // Reset form
       fetchData();
       
-      // Clear success message after 3 seconds
       setTimeout(() => setMessage({ text: "", type: "" }), 3000);
     } catch (err) {
       setMessage({ text: err.response?.data?.message || "Error creating shift", type: "error" });
@@ -72,7 +70,6 @@ const Dashboard = () => {
     <div className="min-h-[calc(100vh-4rem)] bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
       <div className="max-w-7xl mx-auto space-y-6">
         
-        {/* INFO BANNER */}
         {showInfo && (
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
              <div className="relative z-10 flex items-start gap-4">
@@ -93,7 +90,6 @@ const Dashboard = () => {
                 <X size={20} />
               </button>
             </div>
-            {/* Decorative circles */}
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-black/10 rounded-full blur-3xl"></div>
           </div>
@@ -105,7 +101,6 @@ const Dashboard = () => {
             Dashboard Overview
           </h2>
           
-          {/* Simple Stats Pills */}
           <div className="flex gap-3 text-sm font-medium">
             <span className="px-4 py-2 bg-white dark:bg-gray-800 rounded-full shadow-sm text-gray-600 dark:text-gray-300 border border-gray-100 dark:border-gray-700">
               Total Shifts: <span className="text-indigo-600 font-bold">{shifts.length}</span>
@@ -113,7 +108,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* ADMIN: CREATE SHIFT CARD */}
         {user.role === 'admin' && (
           <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between mb-6">
@@ -195,7 +189,6 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* SHIFT TABLE */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
